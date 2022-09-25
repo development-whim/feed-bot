@@ -57,7 +57,7 @@ discord_client.on('interactionCreate', async interaction => {
   feederUser = interaction.member.user.username
 
   if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
-    if (currentFeedersCount > 5) {
+    if (currentFeedersCount > 4) {
 
       await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
 
