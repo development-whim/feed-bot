@@ -19,7 +19,6 @@ const fs = require('fs');
 const app = express();
 
 var feedCount = 0;
-var feeding_mambers = discord_client.member.roles.cache.has(FEEDER_ROLE_ID).map(m => m.user.tag);
 
 const commands = [{
   name: 'feed',
@@ -48,14 +47,15 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
+});
+
+discord_client.on('interactionCreate', async interaction => {
+  var feeding_mambers = interaction.member.roles.cache.has(FEEDER_ROLE_ID).map(m => m.user.tag);
 
   feeding_mambers.forEach(element => {
     console.log(element);
   });
 
-});
-
-discord_client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
   if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
