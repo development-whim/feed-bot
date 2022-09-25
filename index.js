@@ -62,6 +62,8 @@ discord_client.on('interactionCreate', async interaction => {
     if (interaction.commandName === 'send_meal') {
       await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
     }
+  } else {
+    await interaction.reply('You dont have a feeder role!');
   }
 
 })
