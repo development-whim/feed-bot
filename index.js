@@ -55,7 +55,7 @@ discord_client.on('interactionCreate', async interaction => {
 
   if (interaction.commandName === 'feed') {
     feedCount++
-    console.log(`#${feedCount}: Current count`);
+    console.log(`Current count: #${feedCount}`);
     await interaction.reply(`#${feedCount} Queued feeding!`);
   }
 
