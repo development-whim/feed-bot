@@ -11,6 +11,7 @@ const { Routes } = require('discord-api-types/v9');
 const token = process.env.token
 const GUILD_ID = process.env.guild_id
 const CLIENT_ID = process.env.client_id
+const FEEDER_ROLE_ID = process.env.feeder_role
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,10 +22,10 @@ var feedCount = 0;
 
 const commands = [{
   name: 'feed',
-  description: 'Feed him!'
+  description: 'Tube feed him now!'
 },{
   name: 'send_meal',
-  description: 'Send a meal'
+  description: 'Send him a meal.'
 }];
 
 const rest = new REST({ version: '9' }).setToken(token);
@@ -46,22 +47,23 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
-  // console.log(`Count started on  ${GUILD_ID} :  ${CLIENT_ID}`);
 });
-
 
 discord_client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
-  if (interaction.commandName === 'feed') {
-    feedCount++
-    console.log(`Current count: #${feedCount}`);
-    await interaction.reply(`Your feeding has been added to the queue. #${feedCount}`);
+  if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
+    if (interaction.commandName === 'feed') {
+      feedCount++
+      console.log(`Current count: #${feedCount}`);
+      await interaction.reply(`Your feeding has been added to the queue. #${feedCount}`);
+    }
+  
+    if (interaction.commandName === 'send_meal') {
+      await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
+    }
   }
 
-  if (interaction.commandName === 'send_meal') {
-    await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options and send it.');
-  }
 })
 ;
 
