@@ -19,7 +19,8 @@ const fs = require('fs');
 const app = express();
 
 var feedCount = 0;
-var currentFeeders = [];
+var feedersArray = [];
+var currentFeedersCount = 0;
 
 const commands = [{
   name: 'feed',
@@ -56,26 +57,31 @@ discord_client.on('interactionCreate', async interaction => {
   feederUser = interaction.member.user.username
 
   if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
-    if (interaction.commandName === 'feed') {
-      feedCount++
-      currentFeeders.push(feederUser);
-      console.log(`Current count: #${feedCount}`);
-      
-      await interaction.reply(`${feederUser}: Your feeding has been added to the queue. #${feedCount}`);
+    if (currentFeedersCount > 5) {
+
+      if (interaction.commandName === 'feed') {
+        feedCount++
+        console.log(`Current count: #${feedCount}`);
+
+        feedersArray.push(feederUser);
+        currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
+
+        await interaction.reply(`${feederUser}: Your feeding has been added to the queue. #${feedCount}`);
+      }
+    
+      if (interaction.commandName === 'send_meal') {
+        await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
+      }
+
+    } else {
+
+      await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
+
     }
-  
-    if (interaction.commandName === 'send_meal') {
-      await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
-    }
-
-    currentFeeders.forEach(element => {
-      console.log(element);
-    });
-
-    console.log(currentFeeders.filter(obj => obj == feederUser).length);
-
   } else {
+
     await interaction.reply('You dont have a feeder role, sorry!');
+
   }
 
 })
