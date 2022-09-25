@@ -59,6 +59,10 @@ discord_client.on('interactionCreate', async interaction => {
   if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
     if (currentFeedersCount > 5) {
 
+      await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
+
+    } else {
+
       if (interaction.commandName === 'feed') {
         feedCount++
         console.log(`Current count: #${feedCount}`);
@@ -72,10 +76,6 @@ discord_client.on('interactionCreate', async interaction => {
       if (interaction.commandName === 'send_meal') {
         await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
       }
-
-    } else {
-
-      await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
 
     }
   } else {
