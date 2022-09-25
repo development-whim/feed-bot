@@ -61,7 +61,7 @@ discord_client.on('interactionCreate', async interaction => {
     feedersArray.push(feederUser);
     currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
 
-    if (currentFeedersCount > 4) {
+    if (currentFeedersCount > 5) {
 
       await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
 
