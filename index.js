@@ -46,7 +46,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
-  console.log(`Count started on  ${GUILD_ID} :  ${CLIENT_ID}`);
+  // console.log(`Count started on  ${GUILD_ID} :  ${CLIENT_ID}`);
 });
 
 
@@ -56,7 +56,7 @@ discord_client.on('interactionCreate', async interaction => {
   if (interaction.commandName === 'feed') {
     feedCount++
     console.log(`Current count: #${feedCount}`);
-    await interaction.reply(`#${feedCount} Queued feeding!`);
+    await interaction.reply(`Your feeding has been added to the queue. #${feedCount}`);
   }
 
   if (interaction.commandName === 'send_meal') {
