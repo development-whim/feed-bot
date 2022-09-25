@@ -21,7 +21,7 @@ var feedCount = 0;
 
 const commands = [{
   name: 'feed',
-  description: 'Feed the fatty!'
+  description: 'Feed him!'
 },{
   name: 'send_meal',
   description: 'Send a meal'
