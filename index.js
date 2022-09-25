@@ -56,14 +56,14 @@ discord_client.on('interactionCreate', async interaction => {
     if (interaction.commandName === 'feed') {
       feedCount++
       console.log(`Current count: #${feedCount}`);
-      await interaction.reply(`Your feeding has been added to the queue. #${feedCount}`);
+      await interaction.reply(`${interaction.member.user.username}: Your feeding has been added to the queue. #${feedCount}`);
     }
   
     if (interaction.commandName === 'send_meal') {
       await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
     }
   } else {
-    await interaction.reply('You dont have a feeder role!');
+    await interaction.reply('You dont have a feeder role, sorry!');
   }
 
 })
