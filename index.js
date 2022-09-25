@@ -50,11 +50,11 @@ discord_client.on('ready', () => {
 });
 
 discord_client.on('interactionCreate', async interaction => {
-  var feeding_mambers = interaction.member.roles.cache.has(FEEDER_ROLE_ID).map(m => m.user.tag);
+  // var feeding_mambers = interaction.member.roles.cache.has(FEEDER_ROLE_ID).map(m => m.user.tag);
 
-  feeding_mambers.forEach(element => {
-    console.log(element);
-  });
+  // feeding_mambers.forEach(element => {
+  //   console.log(element);
+  // });
 
   if (!interaction.isCommand()) return;
 
