@@ -57,6 +57,10 @@ discord_client.on('interactionCreate', async interaction => {
   feederUser = interaction.member.user.username
 
   if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
+
+    feedersArray.push(feederUser);
+    currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
+
     if (currentFeedersCount > 4) {
 
       await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
@@ -66,10 +70,6 @@ discord_client.on('interactionCreate', async interaction => {
       if (interaction.commandName === 'feed') {
         feedCount++
         console.log(`Current count: #${feedCount}`);
-
-        feedersArray.push(feederUser);
-        currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
-
         await interaction.reply(`${feederUser}: Your feeding has been added to the queue. #${feedCount}`);
       }
     
