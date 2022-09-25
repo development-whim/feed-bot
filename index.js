@@ -19,7 +19,7 @@ const fs = require('fs');
 const app = express();
 
 var feedCount = 0;
-var feeders = [];
+var currentFeeders = [];
 
 const commands = [{
   name: 'feed',
@@ -53,22 +53,26 @@ discord_client.on('ready', () => {
 discord_client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
+  feederUser = interaction.member.user.username
+
   if (interaction.member.roles.cache.has(FEEDER_ROLE_ID)) {
     if (interaction.commandName === 'feed') {
       feedCount++
-      feeders.push(interaction.member.user.username);
+      currentFeeders.push(feederUser);
       console.log(`Current count: #${feedCount}`);
       
-      await interaction.reply(`${interaction.member.user.username}: Your feeding has been added to the queue. #${feedCount}`);
+      await interaction.reply(`${feederUser}: Your feeding has been added to the queue. #${feedCount}`);
     }
   
     if (interaction.commandName === 'send_meal') {
       await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
     }
 
-    feeders.forEach(element => {
+    currentFeeders.forEach(element => {
       console.log(element);
     });
+
+    console.log(currentFeeders.filter(obj => obj == feederUser).length);
 
   } else {
     await interaction.reply('You dont have a feeder role, sorry!');
