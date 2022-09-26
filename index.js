@@ -49,7 +49,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
-  discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: Is online and ready  - Use '/feed' to start feeding this fatty.`)
+  discord_client.channels.cache.get("1023727568144314378").send(`@everyone - FeedBot: Is online and ready - Use '/feed' to start feeding this fatty.`)
 });
 
 discord_client.on('interactionCreate', async interaction => {
