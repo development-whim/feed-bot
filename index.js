@@ -19,13 +19,17 @@ const fs = require('fs');
 const app = express();
 
 var feedCount = 0;
+var fed = 0;
+var fluid_lvl = 0;
+var weight = 350;
+
 var feedersArray = [];
 var currentFeedersCount = 0;
 
 const commands = [{
   name: 'feed',
   description: 'Tube feed him now!'
-},{
+}, {
   name: 'send_meal',
   description: 'Send him a meal.'
 }];
@@ -73,7 +77,7 @@ discord_client.on('interactionCreate', async interaction => {
         console.log(`Current count: #${feedCount}`);
         await interaction.reply(`#${feedCount}: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. ${currentFeedersCount} out of 5 feedings this session.`);
       }
-    
+
       if (interaction.commandName === 'send_meal') {
         await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
       }
@@ -95,12 +99,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+// Push updates for session from machine EXAMPLE: /session/update?fed=25&fluid_lvl=11
+app.get('/session/update', (req, res) => {
+  fed = parseInt(req.query.fed);
+  fluid_lvl = parseInt(req.query.fluid_lvl);
   res.send('');
 });
 
-app.get('/api/count', (req, res) => {
-  res.send({feed_count: feedCount});
+// Push updates for session from machine
+app.get('/session', (req, res) => {
+  res.send({
+    feed_count: feedCount,
+    fed: fed,
+    fluid_lvl: fluid_lvl,
+    weight: weight
+  });
 });
 
 app.listen(3000, () => console.log('server started'));
