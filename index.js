@@ -20,8 +20,8 @@ const app = express();
 
 var feedCount = 0;
 var fed = 0;
-var fluid_lvl = 0;
-var weight = 350;
+var fluid_lvl = 15; // US cups in a gallon
+var current_weight = 350;
 
 var feedersArray = [];
 var currentFeedersCount = 0;
@@ -53,7 +53,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
-  discord_client.channels.cache.get("1023727568144314378").send(`@everyone - FeedBot: Is online and ready - Use '/feed' to start feeding this fatty.`)
+  // discord_client.channels.cache.get("1023727568144314378").send(`@Feeder - FeedBot: Is online and ready - Use '/feed' to start feeding this fatty.`)
 });
 
 discord_client.on('interactionCreate', async interaction => {
@@ -110,9 +110,9 @@ app.get('/session/update', (req, res) => {
 app.get('/session', (req, res) => {
   res.send({
     feed_count: feedCount,
-    fed: fed,
+    fed_count: fed,
     fluid_lvl: fluid_lvl,
-    weight: weight
+    current_weight: current_weight
   });
 });
 
