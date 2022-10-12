@@ -17,6 +17,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
+const path = require('path');
 
 var feedCount = 0;
 var fed = 0;
@@ -102,8 +103,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/fed', (req, res) => {
-  res.sendFile('obs_fed.html');
+
+app.get('/fed', function(req, res) {
+  res.sendFile(path.join(__dirname, '/obs_fed.html'));
 });
 
 // Push updates for session from machine EXAMPLE: /session/update?fed=25&fluid_lvl=11
