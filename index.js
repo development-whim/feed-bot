@@ -102,7 +102,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/fed',function(req,res) {
+app.get('/fed', (req, res) => {
   res.sendFile('obs_fed.html');
 });
 
