@@ -28,7 +28,7 @@
             var URL = 'http://139.144.29.25:3000/session';
 
             $.get(URL).done(function (data) {
-                $('.content').html(data);
+                $('.content').text(data['current_weight']);
                 console.log(data);
             });
 
