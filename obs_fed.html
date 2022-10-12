@@ -18,7 +18,12 @@
 </head>
 <body>
     <div class="container">
-        <h1><span class="content"></span></h1>
+        <h1>
+            <span class="feed_count"></span>
+            <span class="fed_count"></span>
+            <span class="fluid_lvl"></span>
+            <span class="current_weight"></span>
+        </h1>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -27,11 +32,16 @@
         $(document).ready(function () {
             var URL = 'http://139.144.29.25:3000/session';
 
-            $.get(URL).done(function (data) {
-                $('.content').text(data['current_weight']);
-                console.log(data);
-            });
-
+            function fetchdata() {
+                $.get(URL).done(function (data) {
+                    $('.feed_count').text(data['feed_count']);
+                    // $('.fed_count').text(data['fed_count']);
+                    // $('.content').text(data['fluid_lvl']);
+                    // $('.content').text(data['current_weight']);
+                });
+            }
+            
+            setInterval(fetchdata,800);
         });
     </script>
 </body>
