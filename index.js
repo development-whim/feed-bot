@@ -105,7 +105,19 @@ app.use(express.static('public'));
 
 
 app.get('/fed', function(req, res) {
+  res.sendFile(path.join(__dirname, '/obs_feed.html'));
+});
+
+app.get('/fed', function(req, res) {
   res.sendFile(path.join(__dirname, '/obs_fed.html'));
+});
+
+app.get('/fed', function(req, res) {
+  res.sendFile(path.join(__dirname, '/obs_fluid.html'));
+});
+
+app.get('/fed', function(req, res) {
+  res.sendFile(path.join(__dirname, '/obs_weight.html'));
 });
 
 // Push updates for session from machine EXAMPLE: /session/update?fed=25&fluid_lvl=11
