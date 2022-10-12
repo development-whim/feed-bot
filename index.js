@@ -75,7 +75,7 @@ discord_client.on('interactionCreate', async interaction => {
       if (interaction.commandName === 'feed') {
         feedCount++
         console.log(`Queued Feedings: #${feedCount} Fed: ${fed}`);
-        await interaction.reply(`#${feedCount}: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. ${currentFeedersCount} out of 5 feedings left for this session. This fatty has been fed ${fed} times so far!`);
+        // await interaction.reply(`#${feedCount}: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. ${currentFeedersCount} out of 5 feedings left for this session. This fatty has been fed ${fed} times so far!`);
       }
 
       if (interaction.commandName === 'send_meal') {
