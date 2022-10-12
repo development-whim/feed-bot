@@ -26,13 +26,16 @@ var current_weight = 350;
 var feedersArray = [];
 var currentFeedersCount = 0;
 
-const commands = [{
+const commands = [
+{
   name: 'feed',
   description: 'Tube feed him now!'
-}, {
-  name: 'send_meal',
-  description: 'Send him a meal.'
-}];
+}
+// ,{
+//   name: 'send_meal',
+//   description: 'Send him a meal.'
+// }
+];
 
 const rest = new REST({ version: '9' }).setToken(token);
 
@@ -78,9 +81,9 @@ discord_client.on('interactionCreate', async interaction => {
         await interaction.reply(`#${feedCount}: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. ${currentFeedersCount} out of 5 feedings left for this session. This fatty has been fed ${fed} times so far!`);
       }
 
-      if (interaction.commandName === 'send_meal') {
-        await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
-      }
+      // if (interaction.commandName === 'send_meal') {
+      //   await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
+      // }
 
     }
   } else {
