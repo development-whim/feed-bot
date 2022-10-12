@@ -104,7 +104,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 
-app.get('/fed', function(req, res) {
+app.get('/feed', function(req, res) {
   res.sendFile(path.join(__dirname, '/obs_feed.html'));
 });
 
@@ -112,11 +112,11 @@ app.get('/fed', function(req, res) {
   res.sendFile(path.join(__dirname, '/obs_fed.html'));
 });
 
-app.get('/fed', function(req, res) {
+app.get('/ffluid', function(req, res) {
   res.sendFile(path.join(__dirname, '/obs_fluid.html'));
 });
 
-app.get('/fed', function(req, res) {
+app.get('/weight', function(req, res) {
   res.sendFile(path.join(__dirname, '/obs_weight.html'));
 });
 
