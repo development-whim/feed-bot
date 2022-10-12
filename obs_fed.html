@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <h1><span id="content"></span></h1>
+        <h1><span class="content"></span></h1>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -28,7 +28,7 @@
             var URL = 'http://139.144.29.25:3000/session';
 
             $.get(URL).done(function (data) {
-                $('#content').html(data);
+                $('.content').html(data);
                 console.log(data);
             });
 
