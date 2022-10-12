@@ -102,6 +102,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.get('/fed',function(req,res) {
+  res.sendFile('obs_fed.html');
+});
+
 // Push updates for session from machine EXAMPLE: /session/update?fed=25&fluid_lvl=11
 app.get('/session/update', (req, res) => {
   fed = parseInt(req.query.fed);
