@@ -30,7 +30,7 @@ var currentFeedersCount = 0;
 const commands = [
 {
   name: 'feed',
-  description: 'Tube feed him now!'
+  description: 'Tube feed him!'
 }
 // ,{
 //   name: 'send_meal',
@@ -70,9 +70,9 @@ discord_client.on('interactionCreate', async interaction => {
     feedersArray.push(feederUser);
     currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
 
-    if (currentFeedersCount > 5) {
+    if (currentFeedersCount > 15) {
 
-      await interaction.reply('Sorry but you have hit your current limit of feedings. This will reset for the next feeding.');
+      await interaction.reply('Sorry but you have hit your current limit of feedings.');
 
     } else {
 
@@ -102,7 +102,6 @@ discord_client.login(token);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
 
 app.get('/feed', function(req, res) {
   res.sendFile(path.join(__dirname, '/obs_feed.html'));
