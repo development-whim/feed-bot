@@ -57,7 +57,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
-  discord_client.channels.cache.get("1023727568144314378").send(`@Feeder - FeedBot: I am online and ready to feed - Use '/feed' to feed him. Just so you know, I have turned off all limited feedings... just do not let him know that. ;)`)
+  discord_client.channels.cache.get("1023727568144314378").send(`@Feeder - FeedBot: I am online and ready to feed - Use '/feed' to feed him. Just so you know, I have turned off all limited feedings... just do not let him know. ;)`)
 });
 
 discord_client.on('interactionCreate', async interaction => {
@@ -71,15 +71,15 @@ discord_client.on('interactionCreate', async interaction => {
     currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
 
     if (fed > 52) {
-      await interaction.reply(`FeedBot: He has been fed ${fed} times. Thats the full gallon. You all did a great job on him today! Thank you so much for the help! I hope you can join me again next time so we can keep expanding this fatty! FeedBot - Offline`);
+      await interaction.reply(`FeedBot: He has been fed ${fed} times. Thats the full gallon! You all did a great job today! Thank you so much for the help! What else should we do in the future to balloon this fat ass? Any suggestions? Please leave comments here and we will change thing up. :)`);
     } else if (fed > 35) {
       await interaction.reply(`FeedBot: He has put down ${fed} feedings, just a little bit more! I bet he can feel his stomach really starting stretch out now.`);
     } else if (fed > 25) {
       await interaction.reply(`FeedBot: He has taken ${fed} feedings so far, looks to be nearing the half way mark on a full gallon.`);
     } else if (fed > 15) {
-      await interaction.reply(`FeedBot: ${fed} feedings down. Much better. Dont stop!`);
+      await interaction.reply(`FeedBot: ${fed} feedings down. Much better. Dont stop now!`);
     } else if (fed > 8) {
-      await interaction.reply(`FeedBot: ${fed} feedings down. Thats good start, but lets really balloon his belly!`);
+      await interaction.reply(`FeedBot: ${fed} feedings down. Thats good start, but lets really balloon him!`);
     } else {
       await interaction.reply(`FeedBot: ${fed} feedings down.`);
     }
