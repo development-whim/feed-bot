@@ -70,29 +70,29 @@ discord_client.on('interactionCreate', async interaction => {
     console.log(`Queued Feedings: #${feedCount} Fed: ${fed}`);
 
     if (fed > 52) {
-      await interaction.reply(`FeedBot: He has been fed ${fed} times. Thats the full gallon! You all did a great job today! Thank you so much for the help! What else should we do in the future to balloon this fat ass? Please leave comments here. :)`);
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He has been fed ${fed} times. Thats the full gallon! You all did a great job today! Thank you so much for the help! What else should we do in the future to balloon this fat ass? Please leave comments here. :)`);
     } else if (fed > 35) {
-      await interaction.reply(`FeedBot: He downed ${fed} feedings. I bet he can feel his stomach really starting to stretch out now.`);
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He downed ${fed} feedings. I bet he can feel his stomach really starting to stretch out now.`);
     } else if (fed > 25) {
-      await interaction.reply(`FeedBot: He has downed ${fed} feedings so far. He looks to be nearing the half gallon mark.`);
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He has downed ${fed} feedings so far. He looks to be nearing the half gallon mark.`);
     } else if (fed > 15) {
-      await interaction.reply(`FeedBot: ${fed} feedings down. Much better, more!`);
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings down. Much better, more!`);
     } else if (fed > 8) {
-      await interaction.reply(`FeedBot: ${fed} feedings. We can do better than that... right?`);
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings. We can do better than that... right?`);
     } else {
-      await interaction.reply(`FeedBot: ${fed} feedings so far.`);
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings so far.`);
     }
 
     if (interaction.commandName === 'feed') {
-      // if (currentFeedersCount > 20) {
-      //     await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. You are actually starting to stretch out his fat belly! ;)`);
-      // } else if (currentFeedersCount > 15) {
-      //     await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. Looks like his stomach is really starting to feel the impact of your feedings.`);
-      // } else if (currentFeedersCount > 5) {
-      //     await interaction.reply(`FeedBot: ${feederUser} you have fed him ${currentFeedersCount} times out of ${fed} feedings. Is that all you got?`);
-      // } else {
+      if (currentFeedersCount > 20) {
+          await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. You are actually starting to stretch out his fat belly! ;)`);
+      } else if (currentFeedersCount > 15) {
+          await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. Looks like his stomach is really starting to feel the impact of your feedings.`);
+      } else if (currentFeedersCount > 5) {
+          await interaction.reply(`FeedBot: ${feederUser} you have fed him ${currentFeedersCount} times out of ${fed} feedings. Is that all you got?`);
+      } else {
           await interaction.reply(`FeedBot: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. You have fed this fat ass ${currentFeedersCount} times so far.`);
-      // }
+      }
   ``}
 
   } else {
