@@ -82,24 +82,18 @@ discord_client.on('interactionCreate', async interaction => {
     } else {
       await interaction.reply(`FeedBot: ${fed} feedings so far.`);
     }
-
-    if (currentFeedersCount > 20) {
-      if (interaction.commandName === 'feed') {
-        await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. You are actually starting to stretch out his fat belly! ;)`);
+    
+    if (interaction.commandName === 'feed') {
+      if (currentFeedersCount > 20) {
+          await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. You are actually starting to stretch out his fat belly! ;)`);
+      } else if (currentFeedersCount > 15) {
+          await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. Looks like his stomach is really starting to feel the impact of your feedings.`);
+      } else if (currentFeedersCount > 5) {
+          await interaction.reply(`FeedBot: ${feederUser} you have fed him ${currentFeedersCount} times out of ${fed} feedings. Is that all you got?`);
+      } else {
+          await interaction.reply(`FeedBot: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. You have fed this fat ass ${currentFeedersCount} times so far.`);
       }
-    } else if (currentFeedersCount > 15) {
-      if (interaction.commandName === 'feed') {
-        await interaction.reply(`FeedBot: ${feederUser} you have fed this fatty ${currentFeedersCount} times out of ${fed} feedings. Looks like his stomach is really starting to feel the impact of your feedings.`);
-      }
-    } else if (currentFeedersCount > 5) {
-      if (interaction.commandName === 'feed') {
-        await interaction.reply(`FeedBot: ${feederUser} you have fed him ${currentFeedersCount} times out of ${fed} feedings. Is that all you got?`);
-      }
-    } else {
-      if (interaction.commandName === 'feed') {
-        await interaction.reply(`FeedBot: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. You have fed this fat ass ${currentFeedersCount} times so far.`);
-      }
-    }
+  ``}
 
   } else {
 
