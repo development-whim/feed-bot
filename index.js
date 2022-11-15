@@ -32,10 +32,6 @@ const commands = [
   name: 'feed',
   description: 'Tube feed him!'
 }
-// ,{
-//   name: 'send_meal',
-//   description: 'Send him a meal.'
-// }
 ];
 
 const rest = new REST({ version: '9' }).setToken(token);
@@ -70,6 +66,9 @@ discord_client.on('interactionCreate', async interaction => {
     feedersArray.push(feederUser);
     currentFeedersCount = feedersArray.filter(obj => obj == feederUser).length
 
+    feedCount++
+    console.log(`Queued Feedings: #${feedCount} Fed: ${fed}`);
+
     if (fed > 52) {
       await interaction.reply(`FeedBot: He has been fed ${fed} times. Thats the full gallon! You all did a great job today! Thank you so much for the help! What else should we do in the future to balloon this fat ass? Please leave comments here. :)`);
     } else if (fed > 35) {
@@ -101,13 +100,7 @@ discord_client.on('interactionCreate', async interaction => {
         await interaction.reply(`FeedBot: ${feederUser} - Thanks for helping expand this fatty, your feeding has been added to the queue. You have fed this fat ass ${currentFeedersCount} times so far.`);
       }
     }
-      // if (interaction.commandName === 'send_meal') {
-      //   await interaction.reply('Follow this link https://treatstream.com/t/treat/madwhim to see meal options.');
-      // }
 
-
-    feedCount++
-    console.log(`Queued Feedings: #${feedCount} Fed: ${fed}`);
   } else {
 
     await interaction.reply('You dont have a feeder role, sorry!');
