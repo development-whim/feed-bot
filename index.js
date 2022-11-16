@@ -69,15 +69,15 @@ discord_client.on('interactionCreate', async interaction => {
     feedCount++
     console.log(`Queued Feedings: #${feedCount} Fed: ${fed}`);
 
-    if (fed > 52) {
+    if (fed === 52) {
       discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He has been fed ${fed} times. Thats the full gallon! You all did a great job today! Thank you so much for the help! What else should we do in the future to balloon this fat ass? Please leave comments here. :)`);
-    } else if (fed > 35) {
-      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He downed ${fed} feedings. I bet he can feel his stomach really starting to stretch out now.`);
-    } else if (fed > 25) {
+    } else if (fed === 35) {
       discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He has downed ${fed} feedings so far. He looks to be nearing the half gallon mark.`);
-    } else if (fed > 15) {
+    } else if (fed === 25) {
+      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: He downed ${fed} feedings. I bet he can feel his stomach really starting to stretch out now.`);
+    } else if (fed === 15) {
       discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings down. Much better, more!`);
-    } else if (fed > 8) {
+    } else if (fed === 8) {
       discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings. We can do better than that... right?`);
     } else {
       discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings so far.`);
