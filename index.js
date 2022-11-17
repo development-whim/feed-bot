@@ -53,7 +53,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 discord_client.on('ready', () => {
   console.log(`Logged in as ${discord_client.user.tag}!`);
-  // discord_client.channels.cache.get("1023727568144314378").send(`@Feeder - FeedBot: I am online and ready to feed - Use '/feed' to feed him. Just so you know, I have turned off all limited feedings... ;)`)
+  discord_client.channels.cache.get("1023727568144314378").send(`@Feeder - FeedBot: I am online and ready to feed - Use '/feed' to feed him. Just so you know, I have turned off all limited feedings... ;)`)
 });
 
 discord_client.on('interactionCreate', async interaction => {
@@ -80,7 +80,7 @@ discord_client.on('interactionCreate', async interaction => {
     } else if (fed === 8) {
       discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings. We can do better than that... right?`);
     } else {
-      discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings so far.`);
+      // discord_client.channels.cache.get("1023727568144314378").send(`FeedBot: ${fed} feedings so far.`);
     }
 
     if (interaction.commandName === 'feed') {
